@@ -1,0 +1,9 @@
+{
+	"pyBackgroundMusicPlayer": {
+		"name": "pyBackgroundMusicPlayer",
+		"verson": "0.01",
+		"downloadUrl": "http://whiteswan.blayone.com/modules/pyBackgroundMusicPlayer/0-01.zip",
+		"moduleFolder": "modules\\pyBackgroundMusicPlayer\\",
+		"startScript": "startModule.py"
+	}
+}

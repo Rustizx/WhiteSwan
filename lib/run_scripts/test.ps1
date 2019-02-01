@@ -1,0 +1,1 @@
+﻿New-Item -ItemType directory -Path c:\ItWorks
