@@ -9,7 +9,7 @@ info.updateFiles("client", add_module)
 
 """
 
-from lib.run_scripts.run import *
+from run_scripts.run import *
 
 ps = PowerShell()
 
