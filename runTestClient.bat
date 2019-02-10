@@ -1,2 +1,0 @@
-python lib\chat_connection\clientNoClass.py
-pause
