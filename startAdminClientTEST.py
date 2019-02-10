@@ -2,9 +2,7 @@
 """Script for Tkinter GUI chat client."""
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
-from urllib.request import urlopen
 import tkinter
-import uuid
 
 
 def receive():
@@ -32,19 +30,13 @@ def on_closing(event=None):
     my_msg.set("{quit}")
     send()
 
-def quit():
-    msg = "{quit}"
-    client_socket.send(bytes(msg, "utf8"))
-    if msg == "{quit}":
-        client_socket.close()
-        top.quit()
 
 top = tkinter.Tk()
-top.title("Console")
+top.title("Chatter")
 
 messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
-my_msg.set("")
+my_msg.set("Type your messages here.")
 # To navigate through past messages.
 scrollbar = tkinter.Scrollbar(messages_frame)
 # Following will contain the messages.
@@ -60,15 +52,12 @@ entry_field.bind("<Return>", send)
 entry_field.pack()
 send_button = tkinter.Button(top, text="Send", command=send)
 send_button.pack()
-quit_button = tkinter.Button(top, text="Quit", command=quit)
-quit_button.pack()
 
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
 # ----Now comes the sockets part----
-HOST_response = urlopen('http://whiteswan.blayone.com/server.txt')
-HOST = HOST_response.read().decode('utf8')
-PORT = None
+HOST = input('Enter host: ')
+PORT = input('Enter port: ')
 if not HOST:
     HOST = '192.168.1.108'
 else:
@@ -79,22 +68,11 @@ if not PORT:
 else:
     PORT = int(PORT)
 
-id = str(uuid.uuid4())
-name = "admin" + id[0] + id[1] + id[2] + id[4]
-print(id)
-print(name)
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 
 client_socket = socket(AF_INET, SOCK_STREAM)
 client_socket.connect(ADDR)
-
-client_socket.send(bytes(name, "utf8"))
-client_socket.send(bytes(id, "utf8"))
-
-number = client_socket.recv(BUFSIZ).decode("utf8")
-
-print(number)
 
 receive_thread = Thread(target=receive)
 receive_thread.start()

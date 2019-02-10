@@ -69,7 +69,7 @@ class Server:
             else:
                 client.send(bytes("{quit}", "utf8"))
                 client.close()
-                self.unregisterComputer()
+                self.unregisterComputer(number, id, name)
                 del self.clients[client]
                 self.broadcast(bytes("%s has left the chat." % name, "utf8"))
                 break
@@ -79,43 +79,43 @@ class Server:
         self.computerIDtoNAME[id] = name
         if(self.computerNUMBERtoNAME[0] == "name"):
             self.computerNUMBERtoNAME[0] = name
-            print(name + id + "is registered as computer 0")
+            print(name + " " + id + "is registered as computer 0")
             return 0
         elif(self.computerNUMBERtoNAME[1] == "name"):
             self.computerNUMBERtoNAME[1] = name
-            print(name + id + "is registered as computer 1")
+            print(name + " " + id + "is registered as computer 1")
             return 1
         elif(self.computerNUMBERtoNAME[2] == "name"):
             self.computerNUMBERtoNAME[2] = name
-            print(name + id + "is registered as computer 2")
+            print(name + " " + id + "is registered as computer 2")
             return 2
         elif(self.computerNUMBERtoNAME[3] == "name"):
             self.computerNUMBERtoNAME[3] = name
-            print(name + id + "is registered as computer 3")
+            print(name + " " + id + "is registered as computer 3")
             return 3
         elif(self.computerNUMBERtoNAME[4] == "name"):
             self.computerNUMBERtoNAME[4] = name
-            print(name + id + "is registered as computer 4")
+            print(name + " " + id + "is registered as computer 4")
             return 4
         elif(self.computerNUMBERtoNAME[5] == "name"):
             self.computerNUMBERtoNAME[5] = name
-            print(name + id + "is registered as computer 5")
+            print(name + " " + id + "is registered as computer 5")
             return 5
         elif(self.computerNUMBERtoNAME[6] == "name"):
             self.computerNUMBERtoNAME[6] = name
-            print(name + id + "is registered as computer 6")
+            print(name + " " + id + "is registered as computer 6")
             return 6
         elif(self.computerNUMBERtoNAME[7] == "name"):
             self.computerNUMBERtoNAME[7] = name
-            print(name + id + "is registered as computer 7")
+            print(name + " " + id + "is registered as computer 7")
             return 7
         elif(self.computerNUMBERtoNAME[8] == "name"):
             self.computerNUMBERtoNAME[8] = name
-            print(name + id + "is registered as computer 8")
+            print(name + " " + id + "is registered as computer 8")
             return 8
         elif(self.computerNUMBERtoNAME[9] == "name"):
             self.computerNUMBERtoNAME[9] = name
-            print(name + id + "is registered as computer 9")
+            print(name + " " + id + "is registered as computer 9")
             return 9
 
     def unregisterComputer(self, number, id, name):
@@ -125,7 +125,7 @@ class Server:
 
     def getCompNumber(self, name):
         print(name + " called getCompNumber")
-        comp = ' '.join('{0} {1}'.format(key, val) for key, val in sorted(self.computerNUMBERtoNAME.items()))
+        comp = ' '.join('{0} {1},'.format(key, val) for key, val in sorted(self.computerNUMBERtoNAME.items()))
         self.broadcast(bytes(comp, "utf8"))
 
     def broadcast(self, msg, prefix=""):  # prefix is for name identification.
