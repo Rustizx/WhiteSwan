@@ -16,7 +16,10 @@ class Server:
         self.clients = {}
         self.addresses = {}
 
-        self.computerNUMBERtoNAME = {0: "name", 1: "name", 2: "name", 3: "name", 4: "name", 5: "name", 6: "name", 7: "name", 8: "name", 9: "name"}
+        self.computerNUMBERtoNAME = {}
+        for x in range(100):
+            self.computerNUMBERtoNAME.update({x: "name"})
+        #self.computerNUMBERtoNAME = {0: "name", 1: "name", 2: "name", 3: "name", 4: "name", 5: "name", 6: "name", 7: "name", 8: "name", 9: "name"}
         self.computerNAMEtoID = {}
         self.computerIDtoNAME = {}
         #self.computerNAMEtoID = {"name0": "id", "name1": "id","name2": "id", "name3": "id", "name4": "id", "name5": "id", "name6": "id", "name7": "id", "name8": "id", "name9": "id"}
@@ -77,46 +80,47 @@ class Server:
     def registerComputer(self, id, name):
         self.computerNAMEtoID[name] = id
         self.computerIDtoNAME[id] = name
-        if(self.computerNUMBERtoNAME[0] == "name"):
-            self.computerNUMBERtoNAME[0] = name
-            print(name + " " + id + "is registered as computer 0")
-            return 0
-        elif(self.computerNUMBERtoNAME[1] == "name"):
-            self.computerNUMBERtoNAME[1] = name
-            print(name + " " + id + "is registered as computer 1")
-            return 1
-        elif(self.computerNUMBERtoNAME[2] == "name"):
-            self.computerNUMBERtoNAME[2] = name
-            print(name + " " + id + "is registered as computer 2")
-            return 2
-        elif(self.computerNUMBERtoNAME[3] == "name"):
-            self.computerNUMBERtoNAME[3] = name
-            print(name + " " + id + "is registered as computer 3")
-            return 3
-        elif(self.computerNUMBERtoNAME[4] == "name"):
-            self.computerNUMBERtoNAME[4] = name
-            print(name + " " + id + "is registered as computer 4")
-            return 4
-        elif(self.computerNUMBERtoNAME[5] == "name"):
-            self.computerNUMBERtoNAME[5] = name
-            print(name + " " + id + "is registered as computer 5")
-            return 5
-        elif(self.computerNUMBERtoNAME[6] == "name"):
-            self.computerNUMBERtoNAME[6] = name
-            print(name + " " + id + "is registered as computer 6")
-            return 6
-        elif(self.computerNUMBERtoNAME[7] == "name"):
-            self.computerNUMBERtoNAME[7] = name
-            print(name + " " + id + "is registered as computer 7")
-            return 7
-        elif(self.computerNUMBERtoNAME[8] == "name"):
-            self.computerNUMBERtoNAME[8] = name
-            print(name + " " + id + "is registered as computer 8")
-            return 8
-        elif(self.computerNUMBERtoNAME[9] == "name"):
-            self.computerNUMBERtoNAME[9] = name
-            print(name + " " + id + "is registered as computer 9")
-            return 9
+        for x in range(100):
+            if(self.computerNUMBERtoNAME[x] == "name"):
+                self.computerNUMBERtoNAME[x] = name
+                print(name + " " + id + "is registered as computer " + str(x))
+                return x
+        # elif(self.computerNUMBERtoNAME[1] == "name"):
+        #     self.computerNUMBERtoNAME[1] = name
+        #     print(name + " " + id + "is registered as computer 1")
+        #     return 1
+        # elif(self.computerNUMBERtoNAME[2] == "name"):
+        #     self.computerNUMBERtoNAME[2] = name
+        #     print(name + " " + id + "is registered as computer 2")
+        #     return 2
+        # elif(self.computerNUMBERtoNAME[3] == "name"):
+        #     self.computerNUMBERtoNAME[3] = name
+        #     print(name + " " + id + "is registered as computer 3")
+        #     return 3
+        # elif(self.computerNUMBERtoNAME[4] == "name"):
+        #     self.computerNUMBERtoNAME[4] = name
+        #     print(name + " " + id + "is registered as computer 4")
+        #     return 4
+        # elif(self.computerNUMBERtoNAME[5] == "name"):
+        #     self.computerNUMBERtoNAME[5] = name
+        #     print(name + " " + id + "is registered as computer 5")
+        #     return 5
+        # elif(self.computerNUMBERtoNAME[6] == "name"):
+        #     self.computerNUMBERtoNAME[6] = name
+        #     print(name + " " + id + "is registered as computer 6")
+        #     return 6
+        # elif(self.computerNUMBERtoNAME[7] == "name"):
+        #     self.computerNUMBERtoNAME[7] = name
+        #     print(name + " " + id + "is registered as computer 7")
+        #     return 7
+        # elif(self.computerNUMBERtoNAME[8] == "name"):
+        #     self.computerNUMBERtoNAME[8] = name
+        #     print(name + " " + id + "is registered as computer 8")
+        #     return 8
+        # elif(self.computerNUMBERtoNAME[9] == "name"):
+        #     self.computerNUMBERtoNAME[9] = name
+        #     print(name + " " + id + "is registered as computer 9")
+        #     return 9
 
     def unregisterComputer(self, number, id, name):
         del self.computerNAMEtoID[name]
